@@ -1,0 +1,63 @@
+@padding: 50px;
+
+body {
+	border-top: @top-border-width solid transparent;
+
+	&.loaded {
+		border-top-color: @accent;
+	}
+}
+
+h1, h2 {
+	font-family: 'Alfa Slab One';
+	margin-bottom: .25em;
+
+	a:visited {
+		color: @black;
+	}
+}
+
+a {
+	color: @black;
+	text-decoration: none;
+
+	&:hover {
+		color: @accent;
+	}
+
+	&:visited {
+		color: @grey;
+	}
+}
+
+#page-container {
+	.font-size( @base-font-size );
+	font-family: 'Lora';
+	line-height: 1.4;
+	padding: @padding;
+}
+
+#main {
+	.row();
+
+	.column {
+		.half();
+	}
+}
+
+section.feed {
+	min-height: 100px;
+	padding-bottom: @padding;
+
+	ul {
+		.nolist();
+	}
+
+	li {
+		padding-top: .1em;
+
+		&:first-child {
+			padding-top: 0;
+		}
+	}
+}

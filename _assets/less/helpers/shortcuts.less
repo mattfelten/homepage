@@ -1,0 +1,109 @@
+// Unset list styling
+.nolist() {
+	list-style: none;
+	padding-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+// Image replace
+.ir( @width, @height, @file-1x, @file-2x) when not (@file-2x) {
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+
+	br {
+		display: none;
+	}
+
+	display: inline-block;
+
+	width: @width*1px;
+	height: @height*1px;
+	background-image: url("@{file-1x}");
+}
+
+.ir( @width, @height, @file-1x, @file-2x) when (@file-2x) {
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+
+	br {
+		display: none;
+	}
+
+	display: inline-block;
+
+	width: @width*1px;
+	height: @height*1px;
+	.retina-image( @width, @height, @file-1x, @file-2x );
+}
+
+// Retina images
+.retina-image( @width, @height, @file-1x, @file-2x ) {
+	background-image: url("@{file-1x}");
+
+	@media
+	only screen and ( -webkit-min-device-pixel-ratio: 2 ),
+	only screen and ( min--moz-device-pixel-ratio: 2 ),
+	only screen and ( -o-min-device-pixel-ratio: 2/1 ),
+	only screen and ( min-device-pixel-ratio: 2 ),
+	only screen and ( min-resolution: 192dpi ),
+	only screen and ( min-resolution: 2dppx ) {
+		background-image: url("@{file-2x}");
+		background-size: @width*1px @height*1px;
+	}
+}
+
+
+// Clearfix
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+.cf {
+	*zoom: 1;
+
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+.clearfix {
+	.cf();
+}
+
+
+// Sizing shortcuts
+.size(@width, @height) {
+	width: @width;
+	height: @height;
+}
+
+.square(@size) {
+	.size(@size, @size);
+}
+
+html { font-size: 62.5%; } // Set HTML to 10px font-size. Makes math much easier.
+.font-size(@px-size){
+	@rem-size: @px-size / 10;
+	font-size: ~"@{px-size}px";
+	font-size: ~"@{rem-size}rem";
+}
+
+// Containers
+.center() {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container(@max-width, @padding: 0) {
+	max-width: @max-width - (@padding*2)*1px;
+	.center();
+	padding-left: @padding*1px;
+	padding-right: @padding*1px;
+}
+
