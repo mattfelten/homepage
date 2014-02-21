@@ -31,13 +31,17 @@
 }
 
 .half() {
-	.column(6);
+	.column(@columns/2);
 }
 
 .third() {
-	.column(4);
+	.column(@columns/3);
 }
 
 .quarter() {
-	.column(3);
+	.column(@columns/4);
+}
+
+.full() {
+	.column(@columns)
 }

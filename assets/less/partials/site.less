@@ -9,12 +9,27 @@ body {
 }
 
 h1, h2 {
-	font-family: 'Alfa Slab One';
+	font-size: 2em;
+	font-family: Miso;
+	font-weight: 300;
 	margin-bottom: .25em;
 
 	a:visited {
 		color: @black;
 	}
+}
+
+h1 {
+	.column(12);
+}
+
+h2 {
+	font-size: 2.75em;
+	margin: 0 0 .1em;
+
+	overflow: hidden;
+ 	white-space: nowrap;
+ 	text-overflow: ellipsis;
 }
 
 a {
@@ -32,22 +47,21 @@ a {
 
 #page-container {
 	.font-size( @base-font-size );
-	font-family: 'Lora';
+	font-family: Adelle;
 	line-height: 1.4;
 	padding: @padding;
 }
 
 #main {
 	.row();
-
-	.column {
-		.half();
-	}
 }
 
 section.feed {
 	min-height: 100px;
 	padding-bottom: @padding;
+	.third();
+	position: relative;
+
 
 	ul {
 		.nolist();
@@ -56,8 +70,37 @@ section.feed {
 	li {
 		padding-top: .3em;
 
+		overflow: hidden;
+	 	white-space: nowrap;
+	 	text-overflow: ellipsis;
+
 		&:first-child {
 			padding-top: 0;
 		}
+
+		&:hover {
+			&:after {
+				content: 'haha';
+			}
+
+			a {
+				background: #fff;
+				position: absolute;
+				overflow: visible;
+				white-space: normal;
+			}
+		}
+	}
+}
+
+@media (max-width: 1115px) {
+	section.feed {
+		.half();
+	}
+}
+
+@media (max-width: 760px) {
+	section.feed {
+		.full();
 	}
 }
