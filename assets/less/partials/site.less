@@ -12,6 +12,7 @@ h1, h2 {
 	font-size: 2em;
 	font-family: Miso;
 	font-weight: 300;
+	line-height: 1;
 	margin-bottom: .25em;
 
 	a:visited {
@@ -26,10 +27,6 @@ h1 {
 h2 {
 	font-size: 2.75em;
 	margin: 0 0 .1em;
-
-	overflow: hidden;
- 	white-space: nowrap;
- 	text-overflow: ellipsis;
 }
 
 a {
@@ -49,7 +46,7 @@ a {
 	.font-size( @base-font-size );
 	font-family: Adelle;
 	line-height: 1.4;
-	padding: @padding;
+	padding: @padding/2;
 }
 
 #main {
@@ -59,7 +56,7 @@ a {
 section.feed {
 	min-height: 100px;
 	padding-bottom: @padding;
-	.third();
+	.full();
 	position: relative;
 
 
@@ -70,37 +67,49 @@ section.feed {
 	li {
 		padding-top: .3em;
 
-		overflow: hidden;
-	 	white-space: nowrap;
-	 	text-overflow: ellipsis;
-
 		&:first-child {
 			padding-top: 0;
 		}
-
-		&:hover {
-			&:after {
-				content: 'haha';
-			}
-
-			a {
-				background: #fff;
-				position: absolute;
-				overflow: visible;
-				white-space: normal;
-			}
-		}
 	}
 }
 
-@media (max-width: 1115px) {
+@media (min-width: 1115px) {
+	section.feed {
+		.third();
+	}
+}
+
+@media (min-width: 760px) {
+	h2 {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	#page-container {
+		padding: @padding;
+	}
+
 	section.feed {
 		.half();
-	}
-}
 
-@media (max-width: 760px) {
-	section.feed {
-		.full();
+		li {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+
+			&:hover {
+				&:after {
+					content: 'haha';
+				}
+
+				a {
+					background: #fff;
+					position: absolute;
+					overflow: visible;
+					white-space: normal;
+				}
+			}
+		}
 	}
 }
